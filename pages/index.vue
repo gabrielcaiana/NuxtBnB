@@ -9,6 +9,15 @@
 <script>
 import homes from '@/data/homes'
   export default {
+    head:() => ({
+      title: "Homepage",
+      meta: [{
+        name: "description",
+        content: "This is homepage!",
+        hid: "description"
+      }]
+    }),
+
     data:() => ({
       homes: homes.slice(0,3)
     })
