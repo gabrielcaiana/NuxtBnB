@@ -1,3 +1,3 @@
 ## NuxtBnB
 
-![](static/preview.mp4)
+![](static/preview.mov)
