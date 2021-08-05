@@ -1,0 +1,9 @@
+{
+  "name": "NuxtBnB",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "nuxt": "^2.15.7"
+  }
+}
