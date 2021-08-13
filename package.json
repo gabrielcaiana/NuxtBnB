@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
     "nuxt": "^2.15.7"
   },
   "scripts": {
