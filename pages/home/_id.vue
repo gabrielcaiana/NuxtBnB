@@ -36,16 +36,17 @@ export default {
         {
           src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyDuHhQv10LzPxrDla3XGZSB4Uc3RgaH0BY&libraries=places&callback=initMap`,
           hid: 'map',
-          defer: true,
-          skip: process.client && window.mapLoaded
-        }, {
+          async: true,
+          skip: process.client && window.mapLoaded,
+        },
+        {
           innerHTML: 'window.initMap = function() {window.mapLoaded = true}',
-          hid: 'map-init'
-        }
+          hid: 'map-init',
+        },
       ],
       __dangerouslyDisableSanitizersByTagID: {
-        'map-init': ['innerHTML']
-      }
+        'map-init': ['innerHTML'],
+      },
     };
   },
 
@@ -53,26 +54,40 @@ export default {
     home: {},
   }),
 
-  mounted() {
-    const position = new window.google.maps.LatLng(
-      this.home._geoloc.lat,
-      this.home._geoloc.lng
-    );
+  methods: {
+    showMap() {
+      const mapOptions = {
+        zoom: 18,
+        center: new window.google.maps.LatLng(
+          this.home._geoloc.lat,
+          this.home._geoloc.lng
+        ),
+        disableDefaultUI: true,
+        zoomControl: true,
+      };
 
-    const mapOptions = {
-      zoom: 18,
-      center: position,
-      disableDefaultUI: true,
-      zoomControl: true,
-    };
+      const position = new window.google.maps.LatLng(
+        this.home._geoloc.lat,
+        this.home._geoloc.lng
+      );
 
-    const map = new window.google.maps.Map(this.$refs.map, mapOptions);
-    const marker = new window.google.maps.Marker({ position });
-    marker.setMap(map);
+      const map = new window.google.maps.Map(this.$refs.map, mapOptions);
+      const marker = new window.google.maps.Marker({ position });
+      marker.setMap(map);
+    },
   },
 
   created() {
     this.home = homes.find((home) => home.objectID === this.$route.params.id);
+  },
+
+  mounted() {
+    const timer = setInterval(() => {
+      if(window.mapLoaded) {
+        clearInterval(timer)
+        this.showMap()
+      }
+    })
   },
 };
 </script>
