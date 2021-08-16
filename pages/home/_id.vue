@@ -26,6 +26,7 @@
 
 <script>
 import homes from '@/data/homes';
+
 export default {
   layout: 'red',
   head() {
@@ -33,31 +34,41 @@ export default {
       title: this.home.title,
       script: [
         {
-          src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyDuHhQv10LzPxrDla3XGZSB4Uc3RgaH0BY&libraries=places"`,
+          src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyDuHhQv10LzPxrDla3XGZSB4Uc3RgaH0BY&libraries=places&callback=initMap`,
           hid: 'map',
-          defer: true
-        },
+          defer: true,
+          skip: process.client && window.mapLoaded
+        }, {
+          innerHTML: 'window.initMap = function() {window.mapLoaded = true}',
+          hid: 'map-init'
+        }
       ],
+      __dangerouslyDisableSanitizersByTagID: {
+        'map-init': ['innerHTML']
+      }
     };
   },
 
   data: () => ({
-    home: {}
+    home: {},
   }),
 
   mounted() {
-    const position = new window.google.maps.LatLng(this.home._geoloc.lat, this.home._geoloc.lng)
+    const position = new window.google.maps.LatLng(
+      this.home._geoloc.lat,
+      this.home._geoloc.lng
+    );
 
     const mapOptions = {
       zoom: 18,
       center: position,
       disableDefaultUI: true,
-      zoomControl: true
-    }
+      zoomControl: true,
+    };
 
-    const map = new window.google.maps.Map(this.$refs.map, mapOptions)
-    const marker = new window.google.maps.Marker({ position })
-    marker.setMap(map)
+    const map = new window.google.maps.Map(this.$refs.map, mapOptions);
+    const marker = new window.google.maps.Marker({ position });
+    marker.setMap(map);
   },
 
   created() {
