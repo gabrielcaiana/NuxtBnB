@@ -34,9 +34,15 @@ export default {
     };
   },
 
-  async asyncData({ params, $dataApi }) {
+  async asyncData({ params, $dataApi, error }) {
     const response = await $dataApi.getHome(params.id)
-    debugger
+    if(!response.ok) {
+      return error({
+        statusCode: response.status,
+        message: response.statusText
+      })
+    }
+    
     return {
       home: response.json
     }
