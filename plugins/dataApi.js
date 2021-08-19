@@ -9,10 +9,15 @@ export default function(context, inject) {
 
   inject('dataApi', {
     getHome,
+    getHomes
   });
 
   async function getHome(homeid) {
     return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/${homeid}`, { headers }))
+  }
+
+  async function getHomes() {
+    return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`, { headers }))
   }
 
   async function unWrap(response) {

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import homes from '@/data/homes'
   export default {
     head:() => ({
       title: "Homepage",
@@ -18,9 +17,20 @@ import homes from '@/data/homes'
       }]
     }),
 
-    data:() => ({
-      homes: homes.slice(0,3)
-    })
+  async asyncData({ $dataApi, error }) {
+      const response = await $dataApi.getHomes()
+
+      if(!response.ok) {
+        return error({
+          statusCode: response.status,
+          message: response.statusText
+        })
+      }
+
+      return {
+        homes: response.json.hits.slice(0,3)
+      }
+    } 
   }
 </script>
 <style lang="scss" scoped>
