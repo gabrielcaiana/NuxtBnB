@@ -9,22 +9,48 @@ export default function(context, inject) {
 
   inject('dataApi', {
     getHomes,
-    getHome
+    getHome,
+    getReviewsByHomeId
   });
 
   async function getHomes() {
     try {
-      return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`, { headers }))
-    } catch(error) {
-      return getErrorResponse(error)
+      return unWrap(
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`, {
+          headers,
+        })
+      );
+    } catch (error) {
+      return getErrorResponse(error);
     }
   }
 
   async function getHome(homeid) {
-    try{
-      return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/${homeid}`, { headers }))
-    } catch(error) {
-      return getErrorResponse(error)
+    try {
+      return unWrap(
+        await fetch(
+          `https://${appId}-dsn.algolia.net/1/indexes/homes/${homeid}`,
+          { headers }
+        )
+      );
+    } catch (error) {
+      return getErrorResponse(error);
+    }
+  }
+
+  async function getReviewsByHomeId(homeId) {
+    try {
+      return unWrap(
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/reviews/query`, {
+          headers,
+          method: 'Post',
+          body: JSON.stringify({
+            filters: `homeId:${homeId}`,
+          }),
+        })
+      );
+    } catch (error) {
+      return getErrorResponse(error);
     }
   }
 
@@ -44,7 +70,7 @@ export default function(context, inject) {
       ok: false,
       status: 500,
       statusText: error.message,
-      json: {}
-    }
+      json: {},
+    };
   }
 }
