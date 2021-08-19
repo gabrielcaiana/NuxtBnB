@@ -18,7 +18,7 @@ export default {
     prefetchLinks: false
   },
 
-  plugins: ['@/plugins/maps.client'],
+  plugins: ['@/plugins/maps.client', '@/plugins/dataApi'],
 
   modules: ['@nuxtjs/dotenv'],
   

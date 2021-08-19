@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import homes from '@/data/homes';
 
 export default {
   layout: 'red',
@@ -35,16 +34,15 @@ export default {
     };
   },
 
-  data: () => ({
-    home: {},
-  }),
-
-  created() {
-    this.home = homes.find((home) => home.objectID === this.$route.params.id);
+  async asyncData({ params, $dataApi }) {
+    const home = await $dataApi.getHome(params.id)
+    return {
+      home
+    }
   },
 
   mounted() {
-    this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng)
+    this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng);
   },
 };
 </script>
