@@ -35,9 +35,10 @@ export default {
   },
 
   async asyncData({ params, $dataApi }) {
-    const home = await $dataApi.getHome(params.id)
+    const response = await $dataApi.getHome(params.id)
+    debugger
     return {
-      home
+      home: response.json
     }
   },
 
