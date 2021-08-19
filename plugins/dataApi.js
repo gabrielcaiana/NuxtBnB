@@ -8,16 +8,24 @@ export default function(context, inject) {
   };
 
   inject('dataApi', {
-    getHome,
-    getHomes
+    getHomes,
+    getHome
   });
 
-  async function getHome(homeid) {
-    return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/${homeid}`, { headers }))
+  async function getHomes() {
+    try {
+      return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`, { headers }))
+    } catch(error) {
+      return getErrorResponse(error)
+    }
   }
 
-  async function getHomes() {
-    return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`, { headers }))
+  async function getHome(homeid) {
+    try{
+      return unWrap( await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/${homeid}`, { headers }))
+    } catch(error) {
+      return getErrorResponse(error)
+    }
   }
 
   async function unWrap(response) {
@@ -29,5 +37,14 @@ export default function(context, inject) {
       status,
       statusText,
     };
+  }
+
+  function getErrorResponse(error) {
+    return {
+      ok: false,
+      status: 500,
+      statusText: error.message,
+      json: {}
+    }
   }
 }
