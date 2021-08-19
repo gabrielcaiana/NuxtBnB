@@ -1,8 +1,9 @@
-## NuxtBnB
+## NuxtBnB (em desenvolvimento)
 
 NuxtBnB é um clone do AirBnB pronto para produção, escolha de datas, pagamentos, galerias, usuários e muito mais!
 
-
+### DEMO
+[Acessar](https://nuxtbnb.gabrielcaiana.vercel.app/)
 
 https://user-images.githubusercontent.com/26663338/128347157-36b8844b-06e6-44fe-9917-22db5d3d75d1.mp4
 
