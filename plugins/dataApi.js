@@ -16,7 +16,7 @@ export default function(context, inject) {
   async function getHomes() {
     try {
       return unWrap(
-        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`, {
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`,  {
           headers,
         })
       );
@@ -46,6 +46,8 @@ export default function(context, inject) {
           method: 'Post',
           body: JSON.stringify({
             filters: `homeId:${homeId}`,
+            hitsPerPage: 6,
+            attributesToHighlight: []
           }),
         })
       );
