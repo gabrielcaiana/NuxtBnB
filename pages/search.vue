@@ -1,12 +1,20 @@
 <template>
   <div>
-    <p>Results for {{label}}</p>
+    <p>Results for {{ label }}</p>
 
     <div style="width: 800px; height:800px;float:right;" ref="map"></div>
 
     <div v-if="homes.length > 0">
-      <nuxt-link v-for="home in homes" :key="home.objectID" :to="`/home/${home.objectID}`">
-        <HomeRow :home="home" />
+      <nuxt-link
+        v-for="home in homes"
+        :key="home.objectID"
+        :to="`/home/${home.objectID}`"
+      >
+        <HomeRow
+          :home="home"
+          @mouseover.native="highlightMarker(home.objectID, true)"
+          @mouseout.native="highlightMarker(home.objectID, false)"
+        />
       </nuxt-link>
     </div>
     <div v-else>
@@ -34,7 +42,7 @@ export default {
     this.label = to.query.label;
     this.lat = to.query.lat;
     this.lng = to.query.lng;
-    this.updateMap()
+    this.updateMap();
     next();
   },
 
@@ -49,32 +57,50 @@ export default {
   },
 
   mounted() {
-    this.updateMap()
+    this.updateMap();
   },
 
-   methods: {
+  methods: {
     updateMap() {
-      this.$maps.showMap(this.$refs.map, this.lat, this.lng, this.getHomeMarkers());
+      this.$maps.showMap(
+        this.$refs.map,
+        this.lat,
+        this.lng,
+        this.getHomeMarkers()
+      );
     },
 
     getHomeMarkers() {
-      return this.homes.map(home => {
+      return this.homes.map((home) => {
         return {
           ...home._geoloc,
-          pricePerNight: home.pricePerNight
-        }
-      })
-    }
+          pricePerNight: home.pricePerNight,
+          id: home.objectID,
+        };
+      });
+    },
+
+    highlightMarker(homeId, isHighlighted) {
+      document
+        .getElementsByClassName(`home-${homeId}`)[0]
+        ?.classList?.toggle('marker-highlight', isHighlighted);
+    },
   },
 };
 </script>
 
 <style lang="css">
-  .marker {
-    background-color: white;
-    border: 1px solid lightgray;
-    font-weight: bold;
-    border-radius: 20px;
-    padding: 5px 8px;
-  }
+.marker {
+  background-color: white;
+  border: 1px solid lightgray;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 5px 8px;
+}
+
+.marker-highlight {
+  color: white !important;
+  background-color: black;
+  border-color: black;
+}
 </style>
