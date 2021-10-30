@@ -2,18 +2,24 @@
   <div>
     <p>{{ label }} / {{ lat }} / {{ lng }}</p>
     
-    <ul>
-      <li v-for="home in homes" :key="home.objectID">
-        {{ home.title}} <br />
-        {{home.type}}
-      </li>
-    </ul>
+    <div v-if="homes.length > 0"> 
+      <HomeRow v-for="home in homes" :key="home.objectID" :home="home" />
+    </div>
+    <div v-else>
+      No results found!
+    </div>
   </div>
 </template>
 
 
 <script>
   export default {
+    head() {
+      return {
+        title: `Homes around ${this.label}`
+      }
+    },
+
     watchQuery: ['lat'],
 
       async beforeRouteUpdate(to, from, next) {
