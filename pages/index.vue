@@ -28,7 +28,7 @@
       }
 
       return {
-        homes: response.json.hits.slice(0,3)
+        homes: response.json.hits.slice(0,5)
       }
     } 
   }
