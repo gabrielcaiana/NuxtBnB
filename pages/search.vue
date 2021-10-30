@@ -60,7 +60,8 @@ export default {
     getHomeMarkers() {
       return this.homes.map(home => {
         return {
-          ...home._geoloc
+          ...home._geoloc,
+          pricePerNight: home.pricePerNight
         }
       })
     }
@@ -68,4 +69,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css">
+  .marker {
+    background-color: white;
+    border: 1px solid lightgray;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 5px 8px;
+  }
+</style>
