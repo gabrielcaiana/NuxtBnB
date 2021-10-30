@@ -41,7 +41,8 @@ export default function(context, inject) {
     })
   }
 
-  function showMap(canvas, lat, lng) {
+  
+  function showMap(canvas, lat, lng, markers) {
     if (!isLoaded) {
       waiting.push({
         fn: showMap,
@@ -57,10 +58,24 @@ export default function(context, inject) {
       zoomControl: true,
     };
 
-    const position = new window.google.maps.LatLng(lat, lng);
-
     const map = new window.google.maps.Map(canvas, mapOptions);
-    const marker = new window.google.maps.Marker({ position });
-    marker.setMap(map);
+    
+    if(!markers) {
+      const position = new window.google.maps.LatLng(lat, lng);
+      const marker = new window.google.maps.Marker({ position });
+      marker.setMap(map);
+      return
+    }
+
+    const bounds = new window.google.maps.LatLngBounds()
+
+    markers.forEach(home => {
+      const position = new window.google.maps.LatLng(home.lat, home.lng);
+      const marker = new window.google.maps.Marker({ position });
+      marker.setMap(map);
+      bounds.extend(position)
+    })
+    
+    map.fitBounds(bounds)
   }
 }
