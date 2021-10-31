@@ -1,6 +1,9 @@
 export default function(context, inject) {
+  const appId = process.env.API_ID;
+  const apiKey = process.env.API_KEY;
+
   const headers = {
-    'X-Algolia-API-Key': process.env.API_KEY,
+    'X-Algolia-API-Key': apiKey,
     'X-Algolia-Application-Id': appId,
   };
 
@@ -15,7 +18,7 @@ export default function(context, inject) {
   async function getHomes() {
     try {
       return unWrap(
-        await fetch(`https://${process.env.API_ID}-dsn.algolia.net/1/indexes/homes/`,  {
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/`,  {
           headers,
         })
       );
@@ -28,7 +31,7 @@ export default function(context, inject) {
     try {
       return unWrap(
         await fetch(
-          `https://${process.env.API_ID}-dsn.algolia.net/1/indexes/homes/${homeid}`,
+          `https://${appId}-dsn.algolia.net/1/indexes/homes/${homeid}`,
           { headers }
         )
       );
@@ -40,7 +43,7 @@ export default function(context, inject) {
   async function getReviewsByHomeId(homeId) {
     try {
       return unWrap(
-        await fetch(`https://${process.env.API_ID}-dsn.algolia.net/1/indexes/reviews/query`, {
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/reviews/query`, {
           headers,
           method: 'Post',
           body: JSON.stringify({
@@ -58,7 +61,7 @@ export default function(context, inject) {
   async function getUserByHomeId(homeId) {
     try {
       return unWrap(
-        await fetch(`https://${process.env.API_ID}-dsn.algolia.net/1/indexes/users/query`, {
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/users/query`, {
           headers,
           method: 'Post',
           body: JSON.stringify({
@@ -74,7 +77,7 @@ export default function(context, inject) {
   async function getoHomeByLocation(lat, lng, radiusInMeters = 1500) {
     try {
       return unWrap(
-        await fetch(`https://${process.env.API_ID}-dsn.algolia.net/1/indexes/homes/query`, {
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/query`, {
           headers,
           method: 'Post',
           body: JSON.stringify({

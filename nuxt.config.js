@@ -18,7 +18,9 @@ export default {
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi'],
 
-  modules: ['@nuxtjs/dotenv', '@/modules/test'],
+  modules: ['@nuxtjs/dotenv'],
+
+  buildModules: ['@nuxtjs/tailwindcss'],
   
   build: {
     extractCSS: true,
