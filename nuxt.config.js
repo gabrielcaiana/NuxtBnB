@@ -21,9 +21,14 @@ export default {
   modules: ['@nuxtjs/dotenv'],
 
   buildModules: ['@nuxtjs/tailwindcss'],
+
+  css: ['@/assets/sass/app.scss'],
   
   build: {
     extractCSS: true,
+    loaders: {
+      limit: 0
+    },
     babel:{
       plugins: [
         ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
