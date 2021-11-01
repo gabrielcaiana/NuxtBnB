@@ -21,12 +21,15 @@
           {{ pluralize(home.bathrooms, 'room') }}
         </div>
       </div>
-      <div class="pb-6">
+      <div>
         <div class="app-price">
           ${{ home.pricePerNight }} <span> / night</span>
         </div>
 
-        <Search />
+        <div class="app-search">
+          <input type="text" class="datepicker" placeholder="Check in " />
+          <input type="text" class="datepicker" placeholder="Check out " />
+        </div>
         <button class="app-big-button">Request to book!</button>
       </div>
     </div>
