@@ -195,7 +195,7 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   &-dual-picture {
     @apply flex items-center w-full rounded-2xl overflow-hidden;
 
-    > div {
+    > a {
       @apply inline-block flex-grow w-1/2 h-94 p-5 flex items-end text-white justify-center text-center;
 
       h3 {
