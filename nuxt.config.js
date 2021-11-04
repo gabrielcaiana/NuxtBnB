@@ -1,19 +1,24 @@
 export default {
-  rootUrl: process.env.NODE_ENV === "production" ? 'https://nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000',
+  rootUrl:
+    process.env.NODE_ENV === 'production'
+      ? 'https://nuxtbnb.gabrielcaiana.vercel.app'
+      : 'http://localhost:3000',
   components: true,
 
   head: {
-    titleTemplate: "NuxtBnB : %s",
+    titleTemplate: 'NuxtBnB : %s',
     htmlAttrs: {
-      lang: "en"
+      lang: 'en',
     },
-    meta: [{
-      charset: "utf-8"
-    }],
+    meta: [
+      {
+        charset: 'utf-8',
+      },
+    ],
   },
 
   router: {
-    prefetchLinks: false
+    prefetchLinks: false,
   },
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi'],
@@ -23,16 +28,16 @@ export default {
   buildModules: ['@nuxtjs/tailwindcss'],
 
   css: ['@/assets/sass/app.scss'],
-  
+
   build: {
     extractCSS: true,
     loaders: {
-      limit: 0
+      limit: 0,
     },
-    babel:{
+    babel: {
       plugins: [
-        ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
-      ]
-    }
-  }
-}
+        ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+      ],
+    },
+  },
+};
