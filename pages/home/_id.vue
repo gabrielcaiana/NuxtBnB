@@ -37,6 +37,6 @@ export default {
       reviews: responses[1].json.hits,
       user: responses[2].json.hits[0],
     };
-  }
+  },
 };
 </script>

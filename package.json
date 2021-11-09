@@ -1,11 +1,13 @@
 {
-  "name": "NuxtBnB",
+  "name": "nuxtbnb",
+  "author": "Gabriel Caiana",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
     "@nuxtjs/dotenv": "^1.4.1",
+    "commitlint": "^14.1.0",
     "nuxt": "^2.15.7"
   },
   "scripts": {
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^4.2.1",
+    "husky": "^7.0.4",
     "sass": "^1.43.4",
     "sass-loader": "^10"
   }

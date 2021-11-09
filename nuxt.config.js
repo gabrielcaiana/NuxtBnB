@@ -21,14 +21,14 @@ export default {
     prefetchLinks: false,
   },
 
-  plugins: ['@/plugins/maps.client', '@/plugins/dataApi'],
+  plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
 
   modules: ['@nuxtjs/dotenv'],
 
   buildModules: ['@nuxtjs/tailwindcss'],
 
   css: ['@/assets/sass/app.scss'],
-
+  
   build: {
     extractCSS: true,
     loaders: {
@@ -40,4 +40,13 @@ export default {
       ],
     },
   },
+
+  publicRuntimeConfig: {
+    auth: {
+      cookieName: 'idToken',
+      clientId: process.env.CLIENT_ID
+    }
+  },
+  
+  privateRuntimeConfig: {}
 };

@@ -2,7 +2,7 @@
   <header class="app-header">
     <Logo />
     <Search />
-    <User />
+    <GoogleAuth />
   </header>
 </template>
 
