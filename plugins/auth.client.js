@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie'
 
-export default ({ $config }, inject) => {
+export default ({ $config, store }, inject) => {
   window.initAuth = init
 
   addScript()
@@ -32,13 +32,17 @@ export default ({ $config }, inject) => {
 
   function parseUser (user) {
     const profile = user.getBasicProfile()
-    console.log('name: ' + profile.getName())
-    console.log('image Url: ' + profile.getImageUrl())
 
     if(!user.isSignedIn()) {
       Cookie.remove($config.auth.cookieName)
+      store.commit('auth/user', null)
       return
     } 
+
+    store.commit('auth/user', {
+      fullName: profile.getName(),
+      profileURL: profile.getImageUrl()
+    })
 
     const idToken = user.getAuthResponse().id_token
     Cookie.set($config.auth.cookieName, idToken, { expires: 1/24, sameSite: 'Lax'})
@@ -47,5 +51,6 @@ export default ({ $config }, inject) => {
   function signOut() {
     const auth2 = window.gapi.auth2.getAuthInstance()
     auth2.signOut()
+    console.log(store)
   }
 }

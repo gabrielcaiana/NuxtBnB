@@ -5,7 +5,6 @@
       <Search />
     </div>
     <User />
-    <GoogleAuth />
   </header>
 </template>
 

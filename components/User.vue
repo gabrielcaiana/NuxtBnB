@@ -1,11 +1,24 @@
 <template>
   <div class="app-user-menu">
-    <img src="/images/icons/house.svg" alt="house" />
-    <div class="name">Host</div>
-    <img src="/images/user.jpg" class="avatar" alt="avatar" />
+      <template v-if="isLoggedIn">
+        <img src="/images/icons/house.svg" alt="house" />
+        <div class="name">{{ user.fullName }}</div>
+        <img :src="user.profileURL" class="avatar" :alt="user.fullName" />
+      </template>
+    <GoogleAuth v-show="!isLoggedIn" class="ml-4" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    user() {
+      return this.$store.state.auth.user
+    },
+
+    isLoggedIn() {
+      return this.$store.state.auth.isLoggedIn
+    }
+  }
+};
 </script>
