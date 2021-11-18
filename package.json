@@ -7,7 +7,6 @@
   "dependencies": {
     "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
     "@nuxtjs/dotenv": "^1.4.1",
-    "commitlint": "^14.1.0",
     "nuxt": "^2.15.7"
   },
   "scripts": {
@@ -17,6 +16,8 @@
     "generate": "nuxt generate"
   },
   "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
     "@nuxtjs/tailwindcss": "^4.2.1",
     "husky": "^7.0.4",
     "sass": "^1.43.4",
