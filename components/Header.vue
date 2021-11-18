@@ -1,7 +1,10 @@
 <template>
   <header class="app-header">
-    <Logo />
-    <Search />
+    <div>
+      <Logo />
+      <Search />
+    </div>
+    <User />
     <GoogleAuth />
   </header>
 </template>

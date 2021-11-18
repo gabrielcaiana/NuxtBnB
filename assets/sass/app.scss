@@ -30,7 +30,11 @@ $cities: paris, new-york, london, dubai, san-francisco, cancun;
   }
 
   &-header {
-    @apply flex items-center py-9 px-10;
+    @apply flex items-center justify-between py-9 px-10;
+
+    & > div {
+      @apply flex;
+    }
   }
 
   &-logo {
