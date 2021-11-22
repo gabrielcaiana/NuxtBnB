@@ -23,7 +23,7 @@ export default {
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
 
-  modules: ['@nuxtjs/dotenv'],
+  modules: ['@nuxtjs/dotenv', '@/modules/auth'],
 
   buildModules: ['@nuxtjs/tailwindcss'],
 
