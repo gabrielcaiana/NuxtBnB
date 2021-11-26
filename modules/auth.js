@@ -13,9 +13,6 @@ export default function() {
 
     if(!idToken) return rejectHit(res)
 
-    // console.log(req.originalUrl)
-    // console.log(idToken)
-
     const ticket = await getUser(idToken)
 
     if(!ticket) return rejectHit(res)
@@ -26,8 +23,6 @@ export default function() {
       name: ticket.name,
       image: ticket.picture
     }
-
-    // console.log(ticket)
 
     next()
   }
