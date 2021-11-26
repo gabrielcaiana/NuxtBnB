@@ -40,10 +40,10 @@ export default function () {
       }
   }
 
-  async function getUserById(userId) {
+  async function getUserById(id) {
     try {
       return unWrap(
-        await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/users/${userId}`, {
+        await fetch(`https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/users/${id}`, {
           headers
         })
       );
