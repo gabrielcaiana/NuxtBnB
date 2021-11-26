@@ -13,21 +13,21 @@ export default function() {
 
     if(!idToken) return rejectHit(res)
 
-    console.log(req.originalUrl)
-    console.log(idToken)
+    // console.log(req.originalUrl)
+    // console.log(idToken)
 
     const ticket = await getUser(idToken)
 
     if(!ticket) return rejectHit(res)
 
-    req.identify = {
-      id: ticket.id,
+    req.identity = {
+      id: ticket.sub,
       email: ticket.email,
       name: ticket.name,
-      image: ticket.image
+      image: ticket.picture
     }
 
-    console.log(ticket)
+    // console.log(ticket)
 
     next()
   }

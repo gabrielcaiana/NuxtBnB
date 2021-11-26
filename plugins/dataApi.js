@@ -1,6 +1,8 @@
-export default function(context, inject) {
-  const appId = process.env.APP_ID
-  const apiKey = process.env.API_KEY
+import { unWrap, getErrorResponse} from '@/utils/fetchUtils'
+
+export default function( { $config }, inject) {
+  const appId = $config.algolia.appId
+  const apiKey = $config.algolia.apiKey
 
   const headers = {
     'X-Algolia-API-Key': apiKey,
@@ -91,25 +93,5 @@ export default function(context, inject) {
     } catch (error) {
       return getErrorResponse(error);
     }
-  }
-
-  async function unWrap(response) {
-    const json = await response.json();
-    const { ok, status, statusText } = response;
-    return {
-      json,
-      ok,
-      status,
-      statusText,
-    };
-  }
-
-  function getErrorResponse(error) {
-    return {
-      ok: false,
-      status: 500,
-      statusText: error.message,
-      json: {},
-    };
   }
 }

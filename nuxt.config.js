@@ -23,7 +23,7 @@ export default {
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
 
-  modules: ['@nuxtjs/dotenv', '@/modules/auth'],
+  modules: ['@nuxtjs/dotenv', '@/modules/auth', '@/modules/algolia' ],
 
   buildModules: ['@nuxtjs/tailwindcss'],
 
@@ -45,8 +45,17 @@ export default {
     auth: {
       cookieName: 'idToken',
       clientId: process.env.CLIENT_ID
+    },
+    algolia: {
+      appId: process.env.APP_ID,
+      apiKey: process.env.API_KEY
     }
   },
   
-  privateRuntimeConfig: {}
+  privateRuntimeConfig: {
+    algolia: {
+      appId: process.env.APP_ID,
+      apiKey: process.env.SERVER_SIDE_API_KEY
+    }
+  }
 };
