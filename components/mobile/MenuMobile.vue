@@ -32,7 +32,7 @@ export default {
       menus: [
         { name: 'Home', icon: 'home', path: '/' },
         { name: 'Explore', icon: 'compass', path: '/explore' },
-        { name: 'Search', icon: 'search', path: '/search' },
+        { name: 'profile', icon: 'user', path: '/search' },
         { name: 'Settings', icon: 'cog', path: '/settings' },
       ],
     };
@@ -41,8 +41,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);
-
 .hover\:w-full:hover {
   width: 100%;
 }
