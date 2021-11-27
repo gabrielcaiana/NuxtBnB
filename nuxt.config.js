@@ -41,6 +41,10 @@ export default {
     },
   },
 
+  router: {
+    middleware: ['mobile']
+  },
+
   publicRuntimeConfig: {
     auth: {
       cookieName: 'idToken',

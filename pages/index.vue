@@ -27,6 +27,12 @@ export default {
     ],
   }),
 
+  computed: {
+    device() {
+      return this.$store.getters['device/getDevice']
+    }
+  },
+
   async asyncData({ $dataApi, error }) {
     const response = await $dataApi.getHomes();
 
