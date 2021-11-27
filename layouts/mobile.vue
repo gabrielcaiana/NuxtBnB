@@ -1,7 +1,6 @@
 <template>
-  <div>
-    Mobile
-    <nuxt />
+  <div class="bg-gray-100 h-screen">
+    <MenuMobile />
   </div>
 </template>
 

@@ -3,7 +3,6 @@ export default {
     process.env.NODE_ENV === 'production'
       ? 'https://nuxtbnb.gabrielcaiana.vercel.app'
       : 'http://localhost:3000',
-  components: true,
 
   head: {
     titleTemplate: 'NuxtBnB : %s',
@@ -28,6 +27,8 @@ export default {
   buildModules: ['@nuxtjs/tailwindcss'],
 
   css: ['@/assets/sass/app.scss'],
+
+  components: [{ path: '@/components', pathPrefix: false }],
   
   build: {
     extractCSS: true,
