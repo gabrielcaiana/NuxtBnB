@@ -1,8 +1,4 @@
 export default {
-  env: {
-    baseUrl:  process.env.NODE_ENV === 'production' ? 'https://nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3001'
-  },
-
   head: {
     titleTemplate: 'NuxtBnB : %s',
     htmlAttrs: {
@@ -15,15 +11,19 @@ export default {
     ],
   },
 
+  env: {
+    baseUrl:  process.env.NODE_ENV === 'production' ? 'https://nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000'
+  },
+
   router: {
     prefetchLinks: false,
   },
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
 
-  modules: ['@nuxtjs/dotenv', '@/modules/auth', '@/modules/algolia' ],
+  modules: ['@/modules/auth', '@/modules/algolia' ],
 
-  buildModules: ['@nuxtjs/tailwindcss'],
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv'],
 
   css: ['@/assets/sass/app.scss'],
 
