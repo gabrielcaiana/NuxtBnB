@@ -1,16 +1,11 @@
 <template>
   <div class="app">
     <div class="app-container">
-      <div class="app-hero">
-        <h2>
-          - Settle in somewhere new. Discover stays to live, work, or just
-          relax.
-        </h2>
-      </div>
+      <Hero />
+      <SectionPremiumListings />
+      <SectionRecentlyAdded class="app-background-grey" :homes="homes" />
+      <SectionMore />
     </div>
-    <SectionPremiumListings />
-    <SectionRecentlyAdded class="app-background-grey" :homes="homes" />
-    <SectionMore />
   </div>
 </template>
 
@@ -29,8 +24,8 @@ export default {
 
   computed: {
     device() {
-      return this.$store.getters['device/getDevice']
-    }
+      return this.$store.getters['device/getDevice'];
+    },
   },
 
   async asyncData({ $dataApi, error }) {
