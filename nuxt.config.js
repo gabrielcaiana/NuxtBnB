@@ -45,18 +45,18 @@ export default {
     rootUrl: process.env.NODE_ENV === 'production' ? 'nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000',
     auth: {
       cookieName: 'idToken',
-      clientId: process.env.CLIENT_ID
+      clientId: '910129429438-1ud3l6t6cplbp3pit1rvk896je2itqtd.apps.googleusercontent.com'
     },
     algolia: {
-      appId: process.env.APP_ID,
-      apiKey: process.env.API_KEY
+      appId: 'GQFVRWZZKC',
+      apiKey: '70cc5e3e3d95236576a2465f103065dc'
     }
   },
   
   privateRuntimeConfig: {
     algolia: {
-      appId: process.env.APP_ID,
-      apiKey: process.env.SERVER_SIDE_API_KEY
+      appId: 'GQFVRWZZKC',
+      apiKey: '70cc5e3e3d95236576a2465f103065dc'
     }
   }
 };
