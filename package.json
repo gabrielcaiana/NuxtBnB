@@ -16,8 +16,7 @@
   "scripts": {
     "dev": "nuxt --open",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "start": "nuxt start"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",

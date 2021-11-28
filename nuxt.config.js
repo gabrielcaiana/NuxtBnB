@@ -1,4 +1,5 @@
 export default {
+  rootUrl: process.env.NODE_ENV === 'production' ? 'nuxtbnb-gabrielcaiana.vercel.app' : 'http://localhost:3000',
   head: {
     titleTemplate: 'NuxtBnB : %s',
     htmlAttrs: {
@@ -42,7 +43,6 @@ export default {
   },
 
   publicRuntimeConfig: {
-    rootUrl: process.env.NODE_ENV === 'production' ? 'nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000',
     auth: {
       cookieName: 'idToken',
       clientId: '910129429438-1ud3l6t6cplbp3pit1rvk896je2itqtd.apps.googleusercontent.com'

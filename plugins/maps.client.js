@@ -2,7 +2,7 @@ export default function(context, inject) {
   let isLoaded = false;
   let waiting = [];
 
-  const apiKey = 'AIzaSyDd7xuiu3GqtlugJ6ZzbRj6CjhlE-pVFO0'
+  const googleApi = 'AIzaSyDd7xuiu3GqtlugJ6ZzbRj6CjhlE-pVFO0'
 
   addScript();
 
@@ -13,7 +13,7 @@ export default function(context, inject) {
 
   function addScript() {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initGoogleMaps`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleApi}&libraries=places&callback=initGoogleMaps`;
     script.async = true;
     window.initGoogleMaps = initGoogleMaps;
     document.head.appendChild(script);
