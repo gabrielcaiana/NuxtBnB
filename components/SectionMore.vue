@@ -1,5 +1,5 @@
 <template>
-  <div class="app-padded-vertical">
+  <div class="app-container app-padded-vertical">
     <div class="app-wrapper">
       <div class="app-dual-picture">
         <nuxt-link class="city-san-francisco" to="/search?lat=37.7749295&lng=-122.4194155&label=San%20Francisco,%20CA,%20USA">

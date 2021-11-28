@@ -1,5 +1,5 @@
 <template>
-  <div class="app-padded-vertical">
+  <div class="app-container app-padded-vertical">
     <div class="app-wrapper">
       <h2 class="app-title">Premium Listings</h2>
       <div class="app-gallery">

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-padded-vertical">
+  <div class="app-padded-vertical px-10">
     <div class="app-wrapper">
       <div class="app-carousel">
         <div class="app-carousel-header">
