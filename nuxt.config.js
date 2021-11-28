@@ -50,6 +50,9 @@ export default {
     algolia: {
       appId: process.env.APP_ID,
       apiKey: process.env.API_KEY
+    },
+    google: {
+      apiKey: process.env.GOOGLE_API_KEY
     }
   },
   

@@ -1,6 +1,8 @@
-export default function(context, inject) {
+export default function({ $config },context, inject) {
   let isLoaded = false;
   let waiting = [];
+
+  const googleApiKey = $config.google.apiKey
 
   addScript();
 
@@ -11,7 +13,7 @@ export default function(context, inject) {
 
   function addScript() {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places&callback=initGoogleMaps`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&callback=initGoogleMaps`;
     script.async = true;
     window.initGoogleMaps = initGoogleMaps;
     document.head.appendChild(script);
