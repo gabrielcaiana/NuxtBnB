@@ -1,8 +1,8 @@
-export default function({ $config },context, inject) {
+export default function(context, inject) {
   let isLoaded = false;
   let waiting = [];
 
-  const googleApiKey = $config.google.apiKey
+  const googleApiKey = context.$config.google.apiKey
 
   addScript();
 
