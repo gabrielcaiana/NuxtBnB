@@ -18,19 +18,13 @@ export default {
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
 
-  modules: ['@/modules/auth', '@/modules/algolia', '@nuxtjs/pwa'],
+  modules: ['@/modules/auth', '@/modules/algolia'],
 
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv'],
 
   css: ['@/assets/sass/app.scss'],
 
   components: [{ path: '@/components', pathPrefix: false }],
-
-  pwa: {
-    manifest: {
-      theme_color: '#fff'
-    }
-  },
   
   build: {
     extractCSS: true,
