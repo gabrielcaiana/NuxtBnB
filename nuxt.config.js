@@ -28,11 +28,8 @@ export default {
 
   pwa: {
     manifest: {
-      lang: 'pt-br',
-      // publicPath: '/',
-      // fileName: 'manifest.json'
-    },
-    icon: false,
+      theme_color: '#fff'
+    }
   },
   
   build: {
