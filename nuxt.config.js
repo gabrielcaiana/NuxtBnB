@@ -49,7 +49,7 @@ export default {
     },
     algolia: {
       appId: process.env.APP_ID,
-      apiKey: process.API_KEY
+      apiKey: process.env.API_KEY
     }
   },
   
