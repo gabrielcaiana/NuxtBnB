@@ -1,9 +1,38 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "nuxt.config.js",
       "use": "@nuxtjs/vercel-builder",
-      "config": {}
+      "config": {
+        "serverFiles": ["package.json"]
+      }
     }
-  ]
+  ],
+  "routes": [
+    {
+      "src": "/sw.js",
+      "continue": true,
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Service-Worker-Allowed": "/"
+      }
+    }
+  ],
+  "env": {
+    "GOOGLE_API_KEY": true,
+    "APP_ID": true,
+    "API_KEY": true,
+    "SERVER_SIDE_API_KEY": true,
+    "CLIENT_ID": true
+  },
+  "build": {
+    "env": {
+      "GOOGLE_API_KEY": true,
+      "APP_ID": true,
+      "API_KEY": true,
+      "SERVER_SIDE_API_KEY": true,
+      "CLIENT_ID": true
+    }
+  }
 }
