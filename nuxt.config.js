@@ -48,15 +48,15 @@ export default {
       clientId: '910129429438-1ud3l6t6cplbp3pit1rvk896je2itqtd.apps.googleusercontent.com'
     },
     algolia: {
-      appId: 'GQFVRWZZKC',
+      appId: Process.env.APP_ID,
       apiKey: '70cc5e3e3d95236576a2465f103065dc'
     }
   },
   
   privateRuntimeConfig: {
     algolia: {
-      appId: 'GQFVRWZZKC',
-      apiKey: '7dbce04a324a5e3fa200e27dffddfc5a'
+      appId: process.env.APP_ID,
+      apiKey: process.env.SERVER_SIDE_API_KEY
     }
   }
 };
