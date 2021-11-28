@@ -18,9 +18,9 @@ export default {
 
   plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
 
-  modules: ['@/modules/auth', '@/modules/algolia'],
+  modules: ['@/modules/auth', '@/modules/algolia', '@nuxtjs/pwa'],
 
-  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv', '@nuxtjs/pwa'],
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv'],
 
   css: ['@/assets/sass/app.scss'],
 
@@ -28,8 +28,11 @@ export default {
 
   pwa: {
     manifest: {
-      theme_color: '#fff'
-    }
+      lang: 'pt-br',
+      // publicPath: '/',
+      // fileName: 'manifest.json'
+    },
+    icon: false,
   },
   
   build: {
