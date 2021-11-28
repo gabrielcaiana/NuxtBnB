@@ -56,7 +56,7 @@ export default {
   privateRuntimeConfig: {
     algolia: {
       appId: 'GQFVRWZZKC',
-      apiKey: '70cc5e3e3d95236576a2465f103065dc'
+      apiKey: '7dbce04a324a5e3fa200e27dffddfc5a'
     }
   }
 };
