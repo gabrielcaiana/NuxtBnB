@@ -8,6 +8,7 @@
     "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
     "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/pwa": "^3.3.5",
     "cookie": "^0.4.1",
     "google-auth-library": "^7.10.2",
     "js-cookie": "^3.0.1",
