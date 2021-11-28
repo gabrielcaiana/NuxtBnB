@@ -57,6 +57,5 @@ export default ({ $config, store }, inject) => {
   function signOut() {
     const auth2 = window.gapi.auth2.getAuthInstance()
     auth2.signOut()
-    console.log(store)
   }
 }
