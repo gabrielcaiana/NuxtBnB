@@ -11,10 +11,6 @@ export default {
     ],
   },
 
-  env: {
-    baseUrl:  process.env.NODE_ENV === 'production' ? 'https://nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000'
-  },
-
   router: {
     prefetchLinks: false,
   },
@@ -45,8 +41,13 @@ export default {
     middleware: ['mobile']
   },
 
+
+  env: {
+    baseUrl:  process.env.NODE_ENV === 'production' ? 'https://nuxtbnb.netlify.app' : 'http://localhost:3000'
+  },
+
   publicRuntimeConfig: {
-    rootUrl: process.env.NODE_ENV === 'production' ? 'https://nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000',
+    rootUrl: process.env.NODE_ENV === 'production' ? 'https://nuxtbnb.netlify.app' : 'http://localhost:3000',
     auth: {
       cookieName: 'idToken',
       clientId: process.env.CLIENT_ID
