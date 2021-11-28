@@ -42,6 +42,7 @@ export default {
   },
 
   publicRuntimeConfig: {
+    rootUrl: process.env.NODE_ENV === 'production' ? 'nuxtbnb.gabrielcaiana.vercel.app' : 'http://localhost:3000',
     auth: {
       cookieName: 'idToken',
       clientId: process.env.CLIENT_ID
