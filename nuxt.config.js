@@ -45,11 +45,11 @@ export default {
   publicRuntimeConfig: {
     auth: {
       cookieName: 'idToken',
-      clientId: '910129429438-1ud3l6t6cplbp3pit1rvk896je2itqtd.apps.googleusercontent.com'
+      clientId: process.env.CLIENT_ID
     },
     algolia: {
       appId: process.env.APP_ID,
-      apiKey: '70cc5e3e3d95236576a2465f103065dc'
+      apiKey: process.API_KEY
     }
   },
   
