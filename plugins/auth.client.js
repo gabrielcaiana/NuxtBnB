@@ -44,10 +44,15 @@ export default ({ $config, store }, inject) => {
    try {
     const response = await unWrap( await fetch('/api/user'))
     const user = response.json
- 
+    
     store.commit('auth/user', {
       fullName: user.name,
-      profileURL: user.image
+      userEmail: user.email,
+      profileURL: user.image,
+      homeID: user.homeId,
+      joined: user.joined,
+      description: user.description,
+      reviewCount: user.reviewCount
     })
    } catch(error) {
      console.error(error)

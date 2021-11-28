@@ -10,7 +10,14 @@
         v-if="dropdown"
         class="absolute right-0 top-10 mt-2 py-2 w-32 bg-white rounded-md shadow-2xl z-20"
       >
-        <a
+        <nuxt-link
+          to="/admin/profile"
+          class="block px-4 py-2 text-sm  text-gray-700 hover:bg-blue-500 hover:text-white"
+        >
+          Profile
+        </nuxt-link>
+
+          <a
           @click="logout"
           href="#"
           class="block px-4 py-2 text-sm  text-gray-700 hover:bg-blue-500 hover:text-white"
@@ -28,7 +35,7 @@
 export default {
   data() {
     return {
-      dropdown: false
+      dropdown: false,
     }
   },
   computed: {

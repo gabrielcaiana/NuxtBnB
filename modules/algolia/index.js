@@ -1,13 +1,12 @@
+import { get } from 'js-cookie'
 import fetch from 'node-fetch'
-import { unWrap, getErrorResponse} from '../utils/fetchUtils'
+import { unWrap, getErrorResponse} from '../../utils/fetchUtils'
+import { getHeaders, sendJSON } from './helpers'
 
 export default function () {
   const algoliaConfig = this.options.privateRuntimeConfig.algolia
 
-  const headers = {
-    'X-Algolia-API-Key': algoliaConfig.apiKey,
-    'X-Algolia-Application-Id': algoliaConfig.appId,
-  };
+  const headers = getHeaders(algoliaConfig)
 
   this.nuxt.hook('render:setupMiddleware', (app) => {
     app.use('/api/user', getUserRoute)
@@ -18,12 +17,12 @@ export default function () {
     const userData = await getUserById(identity.id)
 
     if(userData.status == 200) {
-      sendJson(userData.json, res)
+      sendJSON(userData.json, res)
       return
     }
 
     createUser(req.identity)
-    sendJson(makeUserPayload(identity), res)
+    sendJSON(makeUserPayload(identity), res)
   }
 
   async function createUser(identity) {
@@ -50,11 +49,6 @@ export default function () {
     } catch (error) {
       return getErrorResponse(error);
     }
-  }
-
-  function sendJson(data, res) {
-    res.setHeader('content-Type', 'application/json')
-    res.end(JSON.stringify(data))
   }
 
   function makeUserPayload(identity) {
