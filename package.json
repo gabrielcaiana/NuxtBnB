@@ -4,20 +4,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "nuxt --open",
+    "dev:shared": "nuxt --hostname 0.0.0.0",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
   "dependencies": {
     "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
     "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.3.5",
+    "body-parser": "^1.19.1",
     "cookie": "^0.4.1",
     "google-auth-library": "^7.10.2",
     "js-cookie": "^3.0.1",
-    "nuxt": "^2.15.7"
-  },
-  "scripts": {
-    "dev": "nuxt --open",
-    "build": "nuxt build",
-    "start": "nuxt start"
+    "nuxt": "^2.15.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",

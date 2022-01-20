@@ -25,7 +25,7 @@ export default {
   css: ['@/assets/sass/app.scss'],
 
   components: [{ path: '@/components', pathPrefix: false }],
-  
+
   build: {
     extractCSS: true,
     loaders: {
@@ -41,7 +41,7 @@ export default {
   loading: { color: '#f650' },
 
   router: {
-    middleware: ['mobile']
+    middleware: ['device']
   },
 
   publicRuntimeConfig: {
