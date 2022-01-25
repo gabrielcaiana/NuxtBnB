@@ -3,7 +3,7 @@
 NuxtBnB is production ready AirBnB clone. Get to work with bookings, date picking, payments, galleries, users, and many more!
 
 ### DEMO
-[Access](https://nuxtbnb.gabrielcaiana.vercel.app/)
+[Access](https://nuxtbnb-gabrielcaiana.vercel.app/)
 
 > technologies used
 
