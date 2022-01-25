@@ -9,5 +9,6 @@ export default function () {
   this.nuxt.hook('render:setupMiddleware', (app) => {
     app.use(bodyParser.urlencoded())
     app.use('/api/user', userRouter(apis));
+    app.use('/api/homes', homesRouter(apis));
   });  
 }
