@@ -1,20 +1,62 @@
-## NuxtBnB (em desenvolvimento)
+## NuxtBnB (WIP)
 
-NuxtBnB é um clone do AirBnB pronto para produção, escolha de datas, pagamentos, galerias, usuários e muito mais!
+NuxtBnB is production ready AirBnB clone. Get to work with bookings, date picking, payments, galleries, users, and many more!
 
 ### DEMO
-[Acessar](https://nuxtbnb.gabrielcaiana.vercel.app/)
+[Access](https://nuxtbnb.gabrielcaiana.vercel.app/)
 
-https://user-images.githubusercontent.com/26663338/128347157-36b8844b-06e6-44fe-9917-22db5d3d75d1.mp4
+> technologies used
+
+-   💚 [Nuxt](https://nuxtjs.org/)  - The Intuitive Vue Framework
+-   ♦️ [Algolia](https://www.algolia.com/)  - The best Search and Discovery Platform for your business
+-   👽 [Vuex](https://vuex.vuejs.org/)  - Vuex is a state management pattern + library for Vue.js applications.
+-   💰 [Stripe](https://pinia.vuejs.org/)  - internet payment infrastructure
+-   🛠 [Google Maps](https://developers.google.com/maps?hl=pt-br)  -  Cloud APIs allow you to automate workflows using your preferred langua
+-   🃏 [Jest](https://jestjs.io/)  -  Unit/Snapshot Testing
+-   🧩 [Commitlint](https://commitlint.js.org/#/)  -  helps your team adhering to a commit convention.
+-   🐻‍❄️ [Tailwind](https://tailwindcss.com/)  -  Rapidly build modern websites without ever leaving your HTML.
+
+## Usage
+
+-   `yarn dev` - This start application.
+-   `yarn jest` - Run all linting and unit tests before committing.
+-   `yarn jest -o` - Run only the tests that have changed.
+-   `yarn jest -u` - Update all of the snapshot tests.
 
 
+Install dependencies:
 
-## 🚀 Tecnologias
+```sh
+yarn install
+```
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+## Testing
 
-- [Nuxt.js](https://nuxtjs.org/)
-- [Agolia](https://www.algolia.com/)
-- [Stripe](https://stripe.com/br)
-- [Google Maps](https://developers.google.com/maps?hl=pt-br)
-- [Jest](https://jestjs.io/pt-BR/)
+Run Vue components unit tests:
+
+```sh
+yarn jest
+```
+
+Open test coverage detailed report:
+
+```sh
+yarn jest:coverage
+```
+## Commit types
+
+| Commit Type | Title                    | Description                                                                                                 | Emoji |
+| ----------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- | :---: |
+| `feat`      | Features                 | A new feature                                                                                               |   ✨   |
+| `fix`       | Bug Fixes                | A bug Fix                                                                                                   |   🐛   |
+| `docs`      | Documentation            | Documentation only changes                                                                                  |   📚   |
+| `style`     | Styles                   | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      |   💎   |
+| `refactor`  | Code Refactoring         | A code change that neither fixes a bug nor adds a feature                                                   |   📦   |
+| `perf`      | Performance Improvements | A code change that improves performance                                                                     |   🚀   |
+| `test`      | Tests                    | Adding missing tests or correcting existing tests                                                           |   🚨   |
+| `build`     | Builds                   | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |   🛠   |
+| `ci`        | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |   ⚙️   |
+| `chore`     | Chores                   | Other changes that don't modify src or test files                                                           |   ♻️   |
+| `revert`    | Reverts                  | Reverts a previous commit                                                                                   |   🗑   |
+
+
