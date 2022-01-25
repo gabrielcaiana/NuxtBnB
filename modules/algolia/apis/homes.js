@@ -9,7 +9,7 @@ export default (algoliaConfig) => {
       try {
         return unWrap(
           await fetch(
-            `https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/homes /${homeId}`,
+            `https://${algoliaConfig.appId}-dsn.algolia.net/1/indexes/homes/${homeId}`,
             {
               headers,
               method: 'PUT',
