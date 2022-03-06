@@ -28,6 +28,13 @@
       <input type="number" v-model="home.bedrooms" class="w-14" />
       <input type="number" v-model="home.Beds" class="w-14" />
       <input type="number" v-model="home.bethrooms" class="w-14" /><br />
+      <input
+        type=""
+        ref="locationSelector"
+        autocomplete="off"
+        placeholder="Select a location"
+        @changed="changed"
+      /><br />
       Anddress:
       <input type="text" v-model="home.location.address" class="w-60" /><br />
       City:
@@ -66,35 +73,67 @@ export default {
           city: '',
           state: '',
           postalCode: '',
-          country: ''
+          country: '',
         },
         _geoloc: {
-          lat: 26.1,
-          lng: 26.1
+          lat: '',
+          lng: '',
         },
         images: [
           'https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
           'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
           'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80',
           'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-          'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-        ]
-      }
-    }
+          'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        ],
+      },
+    };
+  },
+
+  mounted() {
+    this.$maps.makeAutoComplete(this.$refs.locationSelector, ['address']);
   },
 
   methods: {
+    changed(event) {
+      const addressParts = event.detail.address_components;
+      const street =
+        this.getAddressPart(addressParts, 'street_number')?.short_name || '';
+      const route =
+        this.getAddressPart(addressParts, 'route')?.short_name || '';
+
+      this.home.location.address = `${street} ${route}`;
+      this.home.location.city =
+        this.getAddressPart(addressParts, 'administrative_area_level_2')
+          ?.short_name || '';
+      this.home.location.state =
+        this.getAddressPart(addressParts, 'administrative_area_level_1')
+          ?.long_name || '';
+      this.home.location.country =
+        this.getAddressPart(addressParts, 'country')?.short_name || '';
+      this.home.location.postalCode =
+        this.getAddressPart(addressParts, 'postal_code')?.short_name || '';
+
+      const geo = event.detail.geometry.location;
+      this.home._geoloc.lat = geo.lat();
+      this.home._geoloc.lng = geo.lng();
+    },
+
+    getAddressPart(parts, type) {
+      return parts.find((part) => part.types.includes(type));
+    },
+
     async onSubmit() {
       await fetch('/api/homes', {
         method: 'POST',
         body: JSON.stringify(this.home),
         headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-    }
+          'Content-Type': 'application/json',
+        },
+      });
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,14 +1,14 @@
-export default function(context, inject) {
+export default function (context, inject) {
   let isLoaded = false;
   let waiting = [];
 
-  const googleApiKey = context.$config.google.apiKey
+  const googleApiKey = context.$config.google.apiKey;
 
   addScript();
 
   inject('maps', {
     showMap,
-    makeAutoComplete
+    makeAutoComplete,
   });
 
   function addScript() {
@@ -21,29 +21,30 @@ export default function(context, inject) {
 
   function initGoogleMaps() {
     isLoaded = true;
-    waiting.forEach(item => {
-      if(typeof item.fn ===  "function") {
-        item.fn(...item.arguments)
+    waiting.forEach((item) => {
+      if (typeof item.fn === 'function') {
+        item.fn(...item.arguments);
       }
-    })
+    });
 
-    waiting = []
+    waiting = [];
   }
 
-  function makeAutoComplete(input){
-    if(!isLoaded) {
-      waiting.push({ fn: makeAutoComplete, arguments})
-      return
+  function makeAutoComplete(input, types = ['(cities)']) {
+    if (!isLoaded) {
+      waiting.push({ fn: makeAutoComplete, arguments });
+      return;
     }
 
-    const autoComplete = new window.google.maps.places.Autocomplete(input, { types: ['(cities)']});
-    autoComplete.addListener('place_changed',() => {
-      const place = autoComplete.getPlace()
-      input.dispatchEvent(new CustomEvent('changed', { detail: place }))
-    })
+    const autoComplete = new window.google.maps.places.Autocomplete(input, {
+      types,
+    });
+    autoComplete.addListener('place_changed', () => {
+      const place = autoComplete.getPlace();
+      input.dispatchEvent(new CustomEvent('changed', { detail: place }));
+    });
   }
 
-  
   function showMap(canvas, lat, lng, markers) {
     if (!isLoaded) {
       waiting.push({
@@ -58,43 +59,44 @@ export default function(context, inject) {
       center: new window.google.maps.LatLng(lat, lng),
       disableDefaultUI: true,
       zoomControl: true,
-      styles: [{
-        featureType: "poi.business",
-        elementType: "labels.icon",
-        stylers: [{ visibility: "off" }]
-      }]
+      styles: [
+        {
+          featureType: 'poi.business',
+          elementType: 'labels.icon',
+          stylers: [{ visibility: 'off' }],
+        },
+      ],
     };
 
     const map = new window.google.maps.Map(canvas, mapOptions);
-    
-    if(!markers) {
+
+    if (!markers) {
       const position = new window.google.maps.LatLng(lat, lng);
-      const marker = new window.google.maps.Marker({ 
+      const marker = new window.google.maps.Marker({
         position,
-        clickable: false
-       });
+        clickable: false,
+      });
       marker.setMap(map);
-      return
+      return;
     }
 
-    const bounds = new window.google.maps.LatLngBounds()
+    const bounds = new window.google.maps.LatLngBounds();
 
-    markers.forEach(home => {
+    markers.forEach((home) => {
       const position = new window.google.maps.LatLng(home.lat, home.lng);
-      const marker = new window.google.maps.Marker({ 
+      const marker = new window.google.maps.Marker({
         position,
         label: {
           text: `$${home.pricePerNight}`,
-          className: `marker home-${home.id}`
-
+          className: `marker home-${home.id}`,
         },
         icon: 'https://maps.gstatic.com/mapfiles/transparent.png',
-        clickable: false
-       });
+        clickable: false,
+      });
       marker.setMap(map);
-      bounds.extend(position)
-    })
-    
-    map.fitBounds(bounds)
+      bounds.extend(position);
+    });
+
+    map.fitBounds(bounds);
   }
 }
