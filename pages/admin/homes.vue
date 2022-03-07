@@ -3,6 +3,7 @@
     [LIST OF HOME HERE]
     <h2 class="text-xl bold">Add a Home</h2>
     <form @submit.prevent="onSubmit" class="form">
+      <ImageUploader />
       Images: <br />
       <input type="text" v-model="home.images[0]" class="w-3/4" /> <br />
       <input type="text" v-model="home.images[1]" class="w-3/4" /> <br />

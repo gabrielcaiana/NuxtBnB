@@ -1,5 +1,8 @@
 export default {
-  rootUrl: process.env.NODE_ENV === 'production' ? 'https://nuxtbnb-gabrielcaiana.vercel.app' : 'http://localhost:3000',
+  rootUrl:
+    process.env.NODE_ENV === 'production'
+      ? 'https://nuxtbnb-gabrielcaiana.vercel.app'
+      : 'http://localhost:3000',
   head: {
     titleTemplate: 'NuxtBnB : %s',
     htmlAttrs: {
@@ -16,9 +19,22 @@ export default {
     prefetchLinks: false,
   },
 
-  plugins: ['@/plugins/maps.client', '@/plugins/dataApi', '@/plugins/auth.client'],
+  plugins: [
+    '@/plugins/maps.client',
+    '@/plugins/dataApi',
+    '@/plugins/auth.client',
+  ],
 
-  modules: ['@/modules/auth', '@/modules/algolia'],
+  modules: [
+    '@/modules/auth',
+    '@/modules/algolia',
+    '@/modules/cloudinary',
+    '@nuxtjs/cloudinary',
+  ],
+
+  cloudinary: {
+    cloudName: 'gabrielcaiana',
+  },
 
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv'],
 
@@ -41,27 +57,33 @@ export default {
   loading: { color: '#f650' },
 
   router: {
-    middleware: ['device']
+    middleware: ['device'],
   },
 
   publicRuntimeConfig: {
     auth: {
       cookieName: 'idToken',
-      clientId: process.env.CLIENT_ID
+      clientId: process.env.CLIENT_ID,
     },
     algolia: {
       appId: process.env.APP_ID,
-      apiKey: process.env.API_KEY
+      apiKey: process.env.API_KEY,
     },
     google: {
-      apiKey: process.env.GOOGLE_API_KEY
-    }
+      apiKey: process.env.GOOGLE_API_KEY,
+    },
+    cloudinary: {
+      apiKey: process.env.CLOUDINARY_API_KEY,
+    },
   },
-  
+
   privateRuntimeConfig: {
     algolia: {
       appId: process.env.APP_ID,
-      apiKey: process.env.SERVER_SIDE_API_KEY
-    }
-  }
+      apiKey: process.env.SERVER_SIDE_API_KEY,
+    },
+    cloudinary: {
+      apiSecret: process.env.CLOUDINARY_API_SECRET,
+    },
+  },
 };
