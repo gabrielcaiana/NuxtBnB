@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-private-property-in-object": "^7.14.5",
+    "@nuxtjs/cloudinary": "^1.0.3",
     "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.3.5",
@@ -19,7 +20,8 @@
     "cookie": "^0.4.1",
     "google-auth-library": "^7.10.2",
     "js-cookie": "^3.0.1",
-    "nuxt": "^2.15.8"
+    "nuxt": "^2.15.8",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
